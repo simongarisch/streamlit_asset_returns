@@ -16,7 +16,7 @@ PAGES = {
 }
 
 
-def run():    
+def run():
     st.sidebar.title("Navigation")
     selection = st.sidebar.radio("Go to", list(PAGES))
     func = PAGES[selection]

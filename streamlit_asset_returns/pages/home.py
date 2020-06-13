@@ -78,7 +78,7 @@ def eplot():
     """ Plots Euler's number. """
     e = math.exp(1)
     x = np.arange(1, 200)
-    y = (1 + 1/x) ** x
+    y = (1 + 1 / x) ** x
 
     chart = bokeh.plotting.figure(title="Euler's Number", sizing_mode="stretch_width")
     chart.line(x, y, line_width=2, color="blue")
