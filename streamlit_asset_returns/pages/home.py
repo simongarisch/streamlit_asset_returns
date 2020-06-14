@@ -1,4 +1,6 @@
+import os
 import math
+from PIL import Image
 import streamlit as st
 import bokeh.plotting
 import numpy as np
@@ -6,7 +8,12 @@ from .. import util
 
 
 def home():
-    st.title("Stylized Facts of Asset Returns")
+    image_path = os.path.join(
+        os.path.dirname(__file__), "..", "images", "stylized_facts.png"
+    )
+    image = Image.open(image_path)
+    st.image(image)
+
     st.header("What are they?")
     st.write("""
         These are properties of asset returns common to a variety of instruments.

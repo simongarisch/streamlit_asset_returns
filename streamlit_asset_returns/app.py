@@ -4,7 +4,7 @@ from . import pages
 
 PAGES = {
     "Home": pages.home,
-    "Data Source": None,
+    "Data Sources": pages.data,
     "Daily Returns Approximately Zero": None,
     "Peaked with Fat Tails": None,
     "Gain / Loss asymmetry": None,
