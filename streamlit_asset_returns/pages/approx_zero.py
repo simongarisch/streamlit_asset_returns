@@ -9,17 +9,16 @@ from . data import (
 )
 from .. import util
 
-"""
+
 def make_plot(ticker, returns):
     nona_returns = returns[~np.isnan(returns)]
     hist, edges = np.histogram(nona_returns[1:], density=True, bins=50)
     mu = np.mean(nona_returns)
     sigma = np.std(nona_returns)
-    x = np.linspace(-0.05, 0.05, 1000)
+    x = np.linspace(-0.1, 0.1, 1000)
     pdf = 1/(sigma * np.sqrt(2*np.pi)) * np.exp(-(x-mu)**2 / (2*sigma**2))
 
-    title = ticker + "Returns Distribution (μ=%0.2f%%, σ=%0.2f%%)"
-        % (round(mu * 100, 2), round(sigma * 100, 2))
+    title = ticker + " Returns Distribution (μ=%0.2f%%, σ=%0.2f%%)" % (round(mu * 100, 2), round(sigma * 100, 2))
 
     p = figure(title=title, tools="", background_fill_color="#fafafa")
     p.quad(top=hist, bottom=0, left=edges[:-1], right=edges[1:],
@@ -32,7 +31,7 @@ def make_plot(ticker, returns):
     p.yaxis.axis_label = "Pr(x)"
     p.grid.grid_line_color="white"
     return p
-"""
+
 
 def approx_zero():
     st.title("Daily Returns Approximately Zero")
@@ -53,3 +52,8 @@ def approx_zero():
     df = get_pricing_data(ticker, start, end).copy()
     returns = np.log(df["Adj Close"] / df["Adj Close"].shift(1))
     df["Returns"] = returns
+
+    st.subheader(ticker)
+    st.table(returns.describe())
+
+    st.bokeh_chart(make_plot(ticker, returns))
