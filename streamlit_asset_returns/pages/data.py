@@ -1,5 +1,4 @@
 from datetime import datetime
-import altair as alt
 import pandas as pd
 import pandas_datareader.data as web
 import streamlit as st
@@ -17,6 +16,11 @@ def collect_sp500_companies() -> pd.DataFrame:
 
 
 COMPANIES = collect_sp500_companies()
+
+
+def label(symbol):
+    row = COMPANIES.loc[symbol]
+    return symbol + " - " + row.Security
 
 
 @st.cache
@@ -53,10 +57,6 @@ def data():
     if st.checkbox("Pricing Data - Show source code"):
         st.markdown(util.python_code_markdown(get_pricing_data))
 
-    def label(symbol):
-        row = COMPANIES.loc[symbol]
-        return symbol + " - " + row.Security
-
     st.sidebar.subheader("Pricing Data")
     ticker = st.sidebar.selectbox(
         "Select a ticker",
@@ -67,5 +67,5 @@ def data():
 
     start = datetime(2010, 1, 1).date()
     end = datetime.now().date()
-    df = get_pricing_data(ticker, start, end)
+    df = get_pricing_data(ticker, start, end).copy()
     st.line_chart(df["Adj Close"])

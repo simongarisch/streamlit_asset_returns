@@ -5,7 +5,7 @@ from . import pages
 PAGES = {
     "Home": pages.home,
     "Data Sources": pages.data,
-    "Daily Returns Approximately Zero": None,
+    "Daily Returns Approximately Zero": pages.approx_zero,
     "Peaked with Fat Tails": None,
     "Gain / Loss asymmetry": None,
     "Volatility Clustering": None,
