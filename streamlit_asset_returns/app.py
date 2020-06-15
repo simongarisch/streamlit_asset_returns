@@ -10,7 +10,7 @@ PAGES = {
     "Gain / Loss Asymmetry": pages.gain_loss,
     "Volatility Clustering": pages.vol_clustering,
     "Insignificant Autocorrelations": pages.autocorr,
-    "Aggregational Guassianity": None,
+    "Aggregational Gaussianity": pages.agg_gauss,
     "Volume / Volatility Correlation": None,
     "The Impact of Tick Sizes": None,
 }
