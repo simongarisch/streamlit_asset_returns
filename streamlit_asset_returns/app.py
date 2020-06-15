@@ -8,7 +8,7 @@ PAGES = {
     "Daily Returns Approximately Zero": pages.approx_zero,
     "Peaked with Fat Tails": pages.peaked,
     "Gain / Loss Asymmetry": pages.gain_loss,
-    "Volatility Clustering": None,
+    "Volatility Clustering": pages.vol_clustering,
     "Insignificant Autocorrelations": None,
     "Aggregational Guassianity": None,
     "Volume / Volatility Correlation": None,
