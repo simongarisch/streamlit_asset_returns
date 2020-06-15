@@ -1,7 +1,7 @@
 from datetime import datetime
 import numpy as np
 import streamlit as st
-from bokeh.plotting import figure, show
+from bokeh.plotting import figure
 from . data import (
     create_ticker_picker,
     label,
@@ -12,7 +12,7 @@ from .. import util
 
 def create_dist_plot(ticker, returns):
     nona_returns = returns[~np.isnan(returns)]
-    hist, edges = np.histogram(nona_returns[1:], density=True, bins=50)
+    hist, edges = np.histogram(nona_returns, density=True, bins=50)
     mu = np.mean(nona_returns)
     sigma = np.std(nona_returns)
     x = np.linspace(-0.1, 0.1, 1000)
