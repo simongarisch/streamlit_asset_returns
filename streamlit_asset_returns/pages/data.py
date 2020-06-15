@@ -23,8 +23,28 @@ def label(symbol):
     return symbol + " - " + row.Security
 
 
+def create_ticker_picker():
+    return st.sidebar.selectbox(
+        "Select a ticker",
+        COMPANIES.index.sort_values(),
+        index=3,
+        format_func=label,
+    )
+
+
+def get_pricing_data(ticker: str) -> pd.DataFrame:
+    """ Collect pricing data up until today.
+        This will call the streamlit cached function
+        (which is expecting to return immutable data).
+        So be sure to copy the data before returning.
+    """
+    start = datetime(2010, 1, 1).date()
+    end = datetime.now().date()
+    return get_pricing_data_cached(ticker, start, end).copy()
+
+
 @st.cache
-def get_pricing_data(
+def get_pricing_data_cached(
     ticker: str,
     start: datetime.date,
     end: datetime.date
@@ -55,17 +75,10 @@ def data():
         [pandas_datareader](https://github.com/pydata/pandas-datareader) 
     """)
     if st.checkbox("Pricing Data - Show source code"):
-        st.markdown(util.python_code_markdown(get_pricing_data))
+        st.markdown(util.python_code_markdown(get_pricing_data_cached))
 
     st.sidebar.subheader("Pricing Data")
-    ticker = st.sidebar.selectbox(
-        "Select a ticker",
-        COMPANIES.index.sort_values(),
-        index=3,
-        format_func=label,
-    )
+    ticker = create_ticker_picker()
 
-    start = datetime(2010, 1, 1).date()
-    end = datetime.now().date()
-    df = get_pricing_data(ticker, start, end).copy()
+    df = get_pricing_data(ticker)
     st.line_chart(df["Adj Close"])
