@@ -9,7 +9,7 @@ PAGES = {
     "Peaked with Fat Tails": pages.peaked,
     "Gain / Loss Asymmetry": pages.gain_loss,
     "Volatility Clustering": pages.vol_clustering,
-    "Insignificant Autocorrelations": None,
+    "Insignificant Autocorrelations": pages.autocorr,
     "Aggregational Guassianity": None,
     "Volume / Volatility Correlation": None,
     "The Impact of Tick Sizes": None,
