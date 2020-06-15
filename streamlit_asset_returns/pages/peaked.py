@@ -7,9 +7,10 @@ from . data import (
     label,
     get_pricing_data,
 )
+from .. import util
 
 
-def make_plot(ticker, returns):
+def create_dist_plot(ticker, returns):
     nona_returns = returns[~np.isnan(returns)]
     hist, edges = np.histogram(nona_returns[1:], density=True, bins=50)
     mu = np.mean(nona_returns)
@@ -26,8 +27,8 @@ def make_plot(ticker, returns):
     p.y_range.start = 0
     p.legend.location = "center_right"
     p.legend.background_fill_color = "#fefefe"
-    p.xaxis.axis_label = "x"
-    p.yaxis.axis_label = "Pr(x)"
+    p.xaxis.axis_label = "Return"
+    p.yaxis.axis_label = "Pr(Return)"
     p.grid.grid_line_color="white"
     return p
 
@@ -41,9 +42,12 @@ def peaked():
     st.sidebar.subheader("Ticker")
     ticker = create_ticker_picker()
 
+    if st.checkbox("Show source code"):
+        st.markdown(util.python_code_markdown(create_dist_plot))
+
     df = get_pricing_data(ticker)
     returns = np.log(df["Adj Close"] / df["Adj Close"].shift(1))
 
     st.subheader(label(ticker))
 
-    st.bokeh_chart(make_plot(ticker, returns))
+    st.bokeh_chart(create_dist_plot(ticker, returns))
