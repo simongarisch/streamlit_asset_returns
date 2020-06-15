@@ -30,6 +30,7 @@ def altair_abs_returns_plot(df):
         y="AbsReturn",
         color=alt.Color(
             "AbsReturn",
+            # https://vega.github.io/vega/docs/schemes/#reference
             scale=alt.Scale(scheme="blues")
         ),
         tooltip=[
