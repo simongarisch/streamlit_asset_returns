@@ -1,5 +1,6 @@
 from datetime import datetime
 import pandas as pd
+import numpy as np
 import pandas_datareader.data as web
 import streamlit as st
 from .. import util
@@ -40,7 +41,9 @@ def get_pricing_data(ticker: str) -> pd.DataFrame:
     """
     start = datetime(2010, 1, 1).date()
     end = datetime.now().date()
-    return get_pricing_data_cached(ticker, start, end).copy()
+    df = get_pricing_data_cached(ticker, start, end).copy()
+    df["Returns"] = np.log(df["Adj Close"] / df["Adj Close"].shift(1))
+    return df
 
 
 @st.cache

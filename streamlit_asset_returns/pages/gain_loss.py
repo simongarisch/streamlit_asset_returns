@@ -42,7 +42,6 @@ def gain_loss():
         st.markdown(util.python_code_markdown(altair_boxplot))
 
     df = get_pricing_data(ticker)
-    df["Returns"] = np.log(df["Adj Close"] / df["Adj Close"].shift(1))
     df["Year"] = [trade_date.year for trade_date in df.index]
     df = df[df["Year"] != 2009]
 

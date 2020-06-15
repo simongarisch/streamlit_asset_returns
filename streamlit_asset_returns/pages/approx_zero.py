@@ -17,8 +17,7 @@ def approx_zero():
     st.sidebar.subheader("Ticker")
     ticker = create_ticker_picker()
 
-    df = get_pricing_data(ticker)
-    returns = np.log(df["Adj Close"] / df["Adj Close"].shift(1))
+    returns = get_pricing_data(ticker)["Returns"]
 
     st.subheader(label(ticker))
     st.table(returns.describe())

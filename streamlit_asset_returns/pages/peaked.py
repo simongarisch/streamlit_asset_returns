@@ -45,9 +45,6 @@ def peaked():
     if st.checkbox("Show source code"):
         st.markdown(util.python_code_markdown(create_dist_plot))
 
-    df = get_pricing_data(ticker)
-    returns = np.log(df["Adj Close"] / df["Adj Close"].shift(1))
-
+    returns = get_pricing_data(ticker)["Returns"]
     st.subheader(label(ticker))
-
     st.bokeh_chart(create_dist_plot(ticker, returns))
