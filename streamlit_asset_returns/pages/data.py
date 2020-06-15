@@ -63,7 +63,7 @@ def data():
     st.subheader("S&P 500 Stocks")
     st.markdown("""
         We've collected all stocks in the S&P 500 from
-        [Wikipedia](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies) 
+        [Wikipedia](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
     """)
 
     if st.checkbox("S&P 500 Stocks - Show source code"):
@@ -75,7 +75,7 @@ def data():
     st.subheader("Pricing Data")
     st.markdown("""
         Pricing is collected from yahoo finance using
-        [pandas_datareader](https://github.com/pydata/pandas-datareader) 
+        [pandas_datareader](https://github.com/pydata/pandas-datareader)
     """)
     if st.checkbox("Pricing Data - Show source code"):
         st.markdown(util.python_code_markdown(get_pricing_data_cached))

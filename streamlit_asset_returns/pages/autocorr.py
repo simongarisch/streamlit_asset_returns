@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-plt.style.use("seaborn")
 import numpy as np
 from statsmodels.graphics.tsaplots import plot_acf
 import streamlit as st
@@ -9,6 +8,7 @@ from . data import (
     get_pricing_data,
 )
 from .. import util
+plt.style.use("seaborn")
 
 
 def mpl_plot_acf(df):
@@ -49,5 +49,5 @@ def autocorr():
 
     st.subheader(label(ticker))
     df = get_pricing_data(ticker)
-    fig = mpl_plot_acf(df)
+    fig = mpl_plot_acf(df)  # noqa: F841
     st.pyplot()

@@ -1,4 +1,3 @@
-import numpy as np
 import streamlit as st
 from . data import (
     create_ticker_picker,

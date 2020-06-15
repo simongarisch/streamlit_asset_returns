@@ -1,10 +1,8 @@
-from datetime import datetime
 import numpy as np
 import streamlit as st
 from bokeh.plotting import figure
 from . data import (
     create_ticker_picker,
-    label,
     get_pricing_data,
 )
 from .. import util
@@ -16,7 +14,7 @@ def create_dist_plot(ticker, returns):
     mu = np.mean(nona_returns)
     sigma = np.std(nona_returns)
     x = np.linspace(-0.1, 0.1, 1000)
-    pdf = 1/(sigma * np.sqrt(2*np.pi)) * np.exp(-(x-mu)**2 / (2*sigma**2))
+    pdf = 1 / (sigma * np.sqrt(2 * np.pi)) * np.exp(-(x - mu) ** 2 / (2 * sigma ** 2))
 
     title = ticker + " Returns Distribution (μ=%0.2f%%, σ=%0.2f%%)" % (round(mu * 100, 2), round(sigma * 100, 2))
 
@@ -29,7 +27,7 @@ def create_dist_plot(ticker, returns):
     p.legend.background_fill_color = "#fefefe"
     p.xaxis.axis_label = "Return"
     p.yaxis.axis_label = "Pr(Return)"
-    p.grid.grid_line_color="white"
+    p.grid.grid_line_color = "white"
     return p
 
 
@@ -46,5 +44,4 @@ def peaked():
         st.markdown(util.python_code_markdown(create_dist_plot))
 
     returns = get_pricing_data(ticker)["Returns"]
-    st.subheader(label(ticker))
     st.bokeh_chart(create_dist_plot(ticker, returns))

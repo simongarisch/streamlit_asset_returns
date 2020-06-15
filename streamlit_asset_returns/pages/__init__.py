@@ -6,3 +6,4 @@ from .gain_loss import gain_loss  # noqa: F401
 from .vol_clustering import vol_clustering  # noqa: F401
 from .autocorr import autocorr  # noqa: F401
 from .agg_gauss import agg_gauss  # noqa: F401
+from .volume_volatility import volume_volatility  # noqa: F401

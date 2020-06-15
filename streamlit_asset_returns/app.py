@@ -11,7 +11,7 @@ PAGES = {
     "Volatility Clustering": pages.vol_clustering,
     "Insignificant Autocorrelations": pages.autocorr,
     "Aggregational Gaussianity": pages.agg_gauss,
-    "Volume / Volatility Correlation": None,
+    "Volume / Volatility Correlation": pages.volume_volatility,
     "The Impact of Tick Sizes": None,
 }
 
