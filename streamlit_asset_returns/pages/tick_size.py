@@ -1,5 +1,6 @@
 import streamlit as st
 from .data import get_pricing_data
+from .. import util
 
 
 TICKER = "COE.AX"
@@ -32,5 +33,7 @@ def tick_size():
         Gaps start to appear when charting a histogram of returns...
     """)
 
+    if st.checkbox("Show source code"):
+        st.markdown(util.python_code_markdown(mpl_chart_hist))
     plot = mpl_chart_hist()  # noqa: F841
     st.pyplot()
