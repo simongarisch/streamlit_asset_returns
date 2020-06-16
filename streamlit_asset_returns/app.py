@@ -12,7 +12,8 @@ PAGES = {
     "Insignificant Autocorrelations": pages.autocorr,
     "Aggregational Gaussianity": pages.agg_gauss,
     "Volume / Volatility Correlation": pages.volume_volatility,
-    "The Impact of Tick Sizes": None,
+    "The Impact of Tick Sizes": pages.tick_size,
+    "Stocks go up in the long run": None,
 }
 
 
