@@ -9,7 +9,7 @@ TICKER = "COE.AX"
 def mpl_chart_hist():
     df = get_pricing_data(TICKER).dropna()
     return df["Returns"].plot.hist(
-        title= TICKER + " Returns Histogram",
+        title=TICKER + " Returns Histogram",
         bins=100,
     )
 

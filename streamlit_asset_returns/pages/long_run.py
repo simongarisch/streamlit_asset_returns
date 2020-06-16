@@ -1,8 +1,5 @@
 import streamlit as st
-from . data import (
-    get_pricing_data,
-    label,
-)
+from . data import get_pricing_data
 
 
 TICKER = "SPY"
