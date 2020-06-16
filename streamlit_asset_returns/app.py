@@ -13,7 +13,7 @@ PAGES = {
     "Aggregational Gaussianity": pages.agg_gauss,
     "Volume / Volatility Correlation": pages.volume_volatility,
     "The Impact of Tick Sizes": pages.tick_size,
-    "Stocks go up in the long run": None,
+    "Long Run Returns": pages.long_run,
 }
 
 

@@ -8,3 +8,4 @@ from .autocorr import autocorr  # noqa: F401
 from .agg_gauss import agg_gauss  # noqa: F401
 from .volume_volatility import volume_volatility  # noqa: F401
 from .tick_size import tick_size  # noqa: F401
+from .long_run import long_run  # noqa: F401
